@@ -12,13 +12,12 @@ export default class Screen {
 
     this.mesh = _mesh;
     this.sourcePath = _sourcePath;
+    this.model = {};
 
     this.setModel();
   }
 
   setModel() {
-    this.model = {};
-
     // Element
     this.model.element = document.createElement("video");
     this.model.element.muted = true;
@@ -41,7 +40,7 @@ export default class Screen {
     // Mesh
     this.model.mesh = this.mesh;
     this.model.mesh.material = this.model.material;
-    // this.scene.add(this.model.mesh)
+    this.scene.add(this.model.mesh);
   }
 
   update() {

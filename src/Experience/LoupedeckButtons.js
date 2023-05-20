@@ -11,6 +11,8 @@ export default class LoupedeckButtons {
     this.scene = this.experience.scene;
     this.time = this.experience.time;
 
+    this.model = {};
+
     // Debug
     if (this.debug) {
       this.debugFolder = this.debug.addFolder({
@@ -24,8 +26,6 @@ export default class LoupedeckButtons {
   }
 
   setModel() {
-    this.model = {};
-
     this.model.items = [];
 
     // Children
@@ -53,7 +53,7 @@ export default class LoupedeckButtons {
 
       item.mesh = _child;
       item.mesh.material = item.material;
-      // this.scene.add(item.mesh)
+      this.scene.add(item.mesh);
 
       this.model.items.push(item);
 

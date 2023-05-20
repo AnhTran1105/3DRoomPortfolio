@@ -140,10 +140,7 @@ export default class Experience {
 
     if (this.renderer) this.renderer.update();
 
-    if (this.world) {
-      this.world.update();
-      // this.world.getCombinedModel();
-    }
+    if (this.world) this.world.update();
 
     if (this.navigation) this.navigation.update();
 

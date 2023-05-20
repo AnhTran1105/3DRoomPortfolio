@@ -8,14 +8,14 @@ export default class ElgatoLight {
     this.resources = this.experience.resources;
     this.scene = this.experience.scene;
 
+    this.model = {};
+
     this.setModel();
   }
 
   setModel() {
-    this.model = {};
-
     this.model.mesh = this.resources.items.elgatoLightModel.scene.children[0];
-    // this.scene.add(this.model.mesh)
+    this.scene.add(this.model.mesh);
 
     this.model.mesh.material = new THREE.MeshBasicMaterial({
       color: 0xffffff,

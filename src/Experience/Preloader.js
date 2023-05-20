@@ -14,19 +14,15 @@ export default class Preloader extends EventEmitter {
     this.world = this.experience.world;
     this.device = this.sizes.device;
 
-    this.room = null;
-
     this.sizes.on("switchdevice", (device) => {
       this.device = device;
     });
 
     this.world.on("worldready", () => {
-      this.room = this.world.baked;
+      this.group = this.world.group;
       this.setAssets();
       this.playIntro();
     });
-    // this.setAssets();
-    // this.playIntro();
   }
 
   setAssets() {
@@ -60,14 +56,14 @@ export default class Preloader extends EventEmitter {
       });
       if (this.device === "desktop") {
         this.timeline
-          // .to(this.roomChildren.cube.scale, {
-          //   x: 1.4,
-          //   y: 1.4,
-          //   z: 1.4,
-          //   ease: "back.out(2.5)",
-          //   duration: 0.7,
-          // })
-          .to(this.room.position, {
+          .to(this.group.scale, {
+            x: 1.4,
+            y: 1.4,
+            z: 1.4,
+            ease: "back.out(2.5)",
+            duration: 0.7,
+          })
+          .to(this.group.position, {
             x: -1,
             ease: "power1.out",
             duration: 0.7,
@@ -82,7 +78,7 @@ export default class Preloader extends EventEmitter {
           //   ease: "back.out(2.5)",
           //   duration: 0.7,
           // })
-          .to(this.room.position, {
+          .to(this.group.position, {
             z: -1,
             ease: "power1.out",
             duration: 0.7,
@@ -134,7 +130,7 @@ export default class Preloader extends EventEmitter {
           "fadeout"
         )
         .to(
-          this.room.position,
+          this.group.position,
           {
             x: 0,
             y: 0,
@@ -390,9 +386,9 @@ export default class Preloader extends EventEmitter {
 
   move() {
     if (this.device === "desktop") {
-      this.room.position.set(-1, 0, 0);
+      this.group.position.set(-1, 0, 0);
     } else {
-      this.room.position.set(0, 0, -1);
+      this.group.position.set(0, 0, -1);
     }
   }
 
@@ -401,9 +397,9 @@ export default class Preloader extends EventEmitter {
     this.roomChildren.rectLight.height = 0;
 
     if (this.device === "desktop") {
-      this.room.scale.set(0.11, 0.11, 0.11);
+      this.group.scale.set(0.11, 0.11, 0.11);
     } else {
-      this.room.scale.set(0.07, 0.07, 0.07);
+      this.group.scale.set(0.07, 0.07, 0.07);
     }
   }
 

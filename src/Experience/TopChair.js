@@ -11,24 +11,20 @@ export default class TopChair {
     this.world = this.experience.world;
     this.time = this.experience.time;
 
+    this.model = {};
+
     this.setModel();
   }
 
   setModel() {
-    this.model = {};
-
     this.model.group = this.resources.items.topChairModel.scene.children[0];
-    // this.scene.add(this.model.group);
+    this.scene.add(this.model.group);
 
     this.model.group.traverse((_child) => {
       if (_child instanceof THREE.Mesh) {
         _child.material = this.world.baked.model.material;
       }
     });
-  }
-
-  getModel() {
-    return this.model.group;
   }
 
   update() {

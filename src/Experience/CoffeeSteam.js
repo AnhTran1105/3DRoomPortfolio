@@ -12,6 +12,8 @@ export default class CoffeeSteam {
     this.scene = this.experience.scene;
     this.time = this.experience.time;
 
+    this.model = {};
+
     // Debug
     if (this.debug) {
       this.debugFolder = this.debug.addFolder({
@@ -24,8 +26,6 @@ export default class CoffeeSteam {
   }
 
   setModel() {
-    this.model = {};
-
     this.model.color = "#d2958a";
 
     // Material
@@ -45,7 +45,7 @@ export default class CoffeeSteam {
     // Mesh
     this.model.mesh = this.resources.items.coffeeSteamModel.scene.children[0];
     this.model.mesh.material = this.model.material;
-    // this.scene.add(this.model.mesh)
+    this.scene.add(this.model.mesh);
 
     if (this.debug) {
       this.debugFolder

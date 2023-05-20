@@ -11,6 +11,8 @@ export default class BouncingLogo {
     this.world = this.experience.world;
     this.time = this.experience.time;
 
+    this.model = {};
+
     // Debug
     if (this.debug) {
       this.debugFolder = this.debug.addFolder({
@@ -24,13 +26,11 @@ export default class BouncingLogo {
   }
 
   setModel() {
-    this.model = {};
-
     this.model.group = new THREE.Group();
     this.model.group.position.x = 4.2;
     this.model.group.position.y = 2.717;
     this.model.group.position.z = 1.63;
-    // this.scene.add(this.model.group)
+    this.scene.add(this.model.group);
 
     this.model.texture = this.resources.items.threejsJourneyLogoTexture;
     this.model.texture.encoding = THREE.sRGBEncoding;

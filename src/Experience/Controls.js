@@ -12,16 +12,17 @@ export default class Controls {
     this.resources = this.experience.resources;
     this.time = this.experience.time;
     this.camera = this.experience.camera;
-    this.room = this.experience.world.baked.model.mesh;
+    this.group = this.experience.world.group;
 
-    // this.room.children.forEach((child) => {
+    // this.group.children.forEach((child) => {
     //   if (child.type === "RectAreaLight") {
     //     this.rectLight = child;
     //   }
     // });
-    // this.circleFirst = this.experience.world.floor.circleFirst;
-    // this.circleSecond = this.experience.world.floor.circleSecond;
-    // this.circleThird = this.experience.world.floor.circleThird;
+
+    this.circleFirst = this.experience.world.floor.circleFirst;
+    this.circleSecond = this.experience.world.floor.circleSecond;
+    this.circleThird = this.experience.world.floor.circleThird;
 
     GSAP.registerPlugin(ScrollTrigger);
 
@@ -38,7 +39,6 @@ export default class Controls {
   }
 
   setupASScroll() {
-    // https://github.com/ashthornton/asscroll
     const asscroll = new ASScroll({
       ease: 0.1,
       disableRaf: true,
@@ -92,11 +92,11 @@ export default class Controls {
       "(min-width: 969px)": () => {
         // console.log("fired desktop");
 
-        this.room.scale.set(0.11, 0.11, 0.11);
+        this.group.scale.set(0.11, 0.11, 0.11);
         // this.rectLight.width = 0.5;
         // this.rectLight.height = 0.7;
         // this.camera.orthographicCamera.position.set(0, 6.5, 10);
-        this.room.position.set(0, 0, 0);
+        this.group.position.set(0, 0, 0);
         // First section -----------------------------------------
         this.firstMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
@@ -109,7 +109,7 @@ export default class Controls {
           },
         });
         this.firstMoveTimeline.fromTo(
-          this.room.position,
+          this.group.position,
           { x: 0, y: 0, z: 0 },
           {
             x: () => {
@@ -129,7 +129,7 @@ export default class Controls {
           },
         })
           .to(
-            this.room.position,
+            this.group.position,
             {
               x: () => {
                 return 1;
@@ -141,7 +141,7 @@ export default class Controls {
             "same"
           )
           .to(
-            this.room.scale,
+            this.group.scale,
             {
               x: 0.4,
               y: 0.4,
@@ -179,8 +179,8 @@ export default class Controls {
         // console.log("fired mobile");
 
         // Resets
-        this.room.scale.set(0.07, 0.07, 0.07);
-        this.room.position.set(0, 0, 0);
+        this.group.scale.set(0.07, 0.07, 0.07);
+        this.group.position.set(0, 0, 0);
         this.rectLight.width = 0.3;
         this.rectLight.height = 0.4;
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
@@ -194,7 +194,7 @@ export default class Controls {
             scrub: 0.6,
             // invalidateOnRefresh: true,
           },
-        }).to(this.room.scale, {
+        }).to(this.group.scale, {
           x: 0.1,
           y: 0.1,
           z: 0.1,
@@ -211,7 +211,7 @@ export default class Controls {
           },
         })
           .to(
-            this.room.scale,
+            this.group.scale,
             {
               x: 0.25,
               y: 0.25,
@@ -228,7 +228,7 @@ export default class Controls {
             "same"
           )
           .to(
-            this.room.position,
+            this.group.position,
             {
               x: 1.5,
             },
@@ -244,7 +244,7 @@ export default class Controls {
             scrub: 0.6,
             invalidateOnRefresh: true,
           },
-        }).to(this.room.position, {
+        }).to(this.group.position, {
           z: -4.5,
         });
       },
@@ -317,12 +317,11 @@ export default class Controls {
             end: "bottom bottom",
             scrub: 0.6,
           },
+        }).to(this.circleFirst.scale, {
+          x: 3,
+          y: 3,
+          z: 3,
         });
-        // .to(this.circleFirst.scale, {
-        //   x: 3,
-        //   y: 3,
-        //   z: 3,
-        // });
 
         // Second section -----------------------------------------
         this.secondCircle = new GSAP.timeline({
@@ -333,17 +332,17 @@ export default class Controls {
             scrub: 0.6,
           },
         })
-          //   .to(
-          //     this.circleSecond.scale,
-          //     {
-          //       x: 3,
-          //       y: 3,
-          //       z: 3,
-          //     },
-          //     "same"
-          //   )
           .to(
-            this.room.position,
+            this.circleSecond.scale,
+            {
+              x: 3,
+              y: 3,
+              z: 3,
+            },
+            "same"
+          )
+          .to(
+            this.group.position,
             {
               y: 0.7,
             },
@@ -358,12 +357,11 @@ export default class Controls {
             end: "bottom bottom",
             scrub: 0.6,
           },
+        }).to(this.circleThird.scale, {
+          x: 3,
+          y: 3,
+          z: 3,
         });
-        // .to(this.circleThird.scale, {
-        //   x: 3,
-        //   y: 3,
-        //   z: 3,
-        // });
 
         // Mini Platform Animations
         this.secondPartTimeline = new GSAP.timeline({
@@ -373,7 +371,7 @@ export default class Controls {
           },
         });
 
-        this.room.children.forEach((child) => {
+        this.group.children.forEach((child) => {
           if (child.name === "Mini_Floor") {
             this.first = GSAP.to(child.position, {
               x: -5.44055,
@@ -398,7 +396,7 @@ export default class Controls {
               duration: 0.3,
             });
           }
-          if (child.name === "FloorFirst") {
+          if (child.name === "circleFirst") {
             this.fourth = GSAP.to(child.scale, {
               x: 1,
               y: 1,
@@ -407,7 +405,7 @@ export default class Controls {
               duration: 0.3,
             });
           }
-          if (child.name === "FloorSecond") {
+          if (child.name === "circleSecond") {
             this.fifth = GSAP.to(child.scale, {
               x: 1,
               y: 1,
@@ -415,7 +413,7 @@ export default class Controls {
               duration: 0.3,
             });
           }
-          if (child.name === "FloorThird") {
+          if (child.name === "circleThird") {
             this.sixth = GSAP.to(child.scale, {
               x: 1,
               y: 1,

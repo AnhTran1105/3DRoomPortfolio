@@ -10,6 +10,8 @@ export default class GoogleLeds {
     this.scene = this.experience.scene;
     this.time = this.experience.time;
 
+    this.model = {};
+
     // Debug
     if (this.debug) {
       this.debugFolder = this.debug.addFolder({
@@ -22,8 +24,6 @@ export default class GoogleLeds {
   }
 
   setModel() {
-    this.model = {};
-
     this.model.items = [];
 
     const colors = ["#196aff", "#ff0000", "#ff5d00", "#7db81b"];
@@ -59,7 +59,7 @@ export default class GoogleLeds {
 
       item.mesh = _child;
       item.mesh.material = item.material;
-      // this.scene.add(item.mesh)
+      this.scene.add(item.mesh);
 
       this.model.items.push(item);
 
