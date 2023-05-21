@@ -14,6 +14,12 @@ export default class Controls {
     this.camera = this.experience.camera;
     this.group = this.experience.world.group;
 
+    // this.topchair = this.group.children[1];
+
+    // // this.topchair = this.group.children.filter((child) => (child.name = "topchair"))
+
+    // console.log(this.group.children[1]);
+
     // this.group.children.forEach((child) => {
     //   if (child.type === "RectAreaLight") {
     //     this.rectLight = child;
@@ -92,7 +98,7 @@ export default class Controls {
       "(min-width: 969px)": () => {
         // console.log("fired desktop");
 
-        this.group.scale.set(0.1, 0.1, 0.1);
+        this.group.scale.set(0.3, 0.3, 0.3);
         // this.rectLight.width = 0.5;
         // this.rectLight.height = 0.7;
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
@@ -113,7 +119,7 @@ export default class Controls {
           { x: 0, y: 0, z: 0 },
           {
             x: () => {
-              return this.sizes.width * 0.0014;
+              return this.sizes.width * 0.0015;
             },
           }
         );
@@ -149,6 +155,15 @@ export default class Controls {
             },
             "same"
           );
+        // .to(
+        //   this.topchair.rotation,
+        //   {
+        //     y: 2 * Math.PI + Math.PI / 4,
+        //     ease: "power1.out",
+        //     duration: 1.5,
+        //   },
+        //   "same"
+        // );
         // .to(
         //   this.rectLight,
         //   {
@@ -343,7 +358,8 @@ export default class Controls {
           .to(
             this.group.position,
             {
-              y: 0.7,
+              x: -1,
+              y: -1,
             },
             "same"
           );

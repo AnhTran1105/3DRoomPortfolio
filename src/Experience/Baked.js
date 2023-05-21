@@ -24,10 +24,6 @@ export default class CoffeeSteam {
     this.setModel();
   }
 
-  scaleModel() {
-    this.model.mesh.scale.set(0.1, 0.1, 0.1);
-  }
-
   setModel() {
     this.model.mesh = this.resources.items.roomModel.scene.children[0];
 

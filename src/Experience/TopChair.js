@@ -18,6 +18,8 @@ export default class TopChair {
 
   setModel() {
     this.model.group = this.resources.items.topChairModel.scene.children[0];
+
+    this.model.group.name = "topchair";
     this.scene.add(this.model.group);
 
     this.model.group.traverse((_child) => {

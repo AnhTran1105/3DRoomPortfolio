@@ -58,14 +58,14 @@ export default class Preloader extends EventEmitter {
       if (this.device === "desktop") {
         this.timeline
           .to(this.group.scale, {
-            x: 0.1,
-            y: 0.1,
-            z: 0.1,
+            x: 0.05,
+            y: 0.05,
+            z: 0.05,
             ease: "back.out(2.5)",
-            duration: 0.7,
+            duration: 1,
           })
           .to(this.group.position, {
-            x: -1,
+            x: -1.5,
             ease: "power1.out",
             duration: 0.7,
           });
@@ -114,6 +114,7 @@ export default class Preloader extends EventEmitter {
       this.secondTimeline = new GSAP.timeline();
 
       this.secondTimeline
+
         .to(
           ".intro-text .animatedis",
           {
@@ -130,6 +131,7 @@ export default class Preloader extends EventEmitter {
           },
           "fadeout"
         )
+
         .to(
           this.group.position,
           {
@@ -140,6 +142,24 @@ export default class Preloader extends EventEmitter {
           },
           "same"
         )
+
+        .to(
+          this.group.rotation,
+          {
+            y: 2 * Math.PI + Math.PI / 4,
+            ease: "power1.out",
+            duration: 1.5,
+          },
+          "same"
+        )
+
+        .to(this.group.scale, {
+          x: 0.3,
+          y: 0.3,
+          z: 0.3,
+          ease: "power1.out",
+          duration: 1,
+        })
         // .to(
         //   this.roomChildren.cube320.rotation,
         //   {

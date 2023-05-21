@@ -27,23 +27,19 @@ export default class Experience {
 
     this.canvas = canvas;
 
-    // if (!this.targetElement) {
-    //   console.warn("Missing 'targetElement' property");
-    //   return;
-    // }
-
     this.time = new Time();
     this.sizes = new Sizes();
     // this.world = new World();
-    // this.setConfig();
+    this.setConfig();
     // this.setStats();
-    // this.setDebug();
+    this.setDebug();
     this.setScene();
     this.setCamera();
     this.setRenderer();
     this.setResources();
     this.theme = new Theme();
     this.setWorld();
+
     // this.setNavigation();
     // load preloader
     this.setPreloader();
@@ -73,36 +69,40 @@ export default class Experience {
   //     return Experience.instance
   // }
 
-  // setConfig() {
-  //   this.config = {};
+  setConfig() {
+    this.config = {};
 
-  //   // Pixel ratio
-  //   this.config.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2);
+    // Pixel ratio
+    this.config.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1), 2);
 
-  //   // Width and height
-  //   const boundings = this.targetElement.getBoundingClientRect();
-  //   this.config.width = boundings.width;
-  //   this.config.height = boundings.height || window.innerHeight;
-  //   this.config.smallestSide = Math.min(this.config.width, this.config.height);
-  //   this.config.largestSide = Math.max(this.config.width, this.config.height);
+    // Width and height
+    const boundings = this.canvas.getBoundingClientRect();
+    this.config.width = boundings.width;
+    this.config.height = boundings.height || window.innerHeight;
+    this.config.smallestSide = Math.min(this.config.width, this.config.height);
+    this.config.largestSide = Math.max(this.config.width, this.config.height);
 
-  //   // Debug
-  //   // this.config.debug = window.location.hash === '#debug'
-  //   this.config.debug = this.config.width > 420;
-  // }
+    // Debug
+    // this.config.debug = window.location.hash === '#debug'
+    this.config.debug = this.config.width > 420;
+  }
 
-  // setStats() {
-  //   if (this.config.debug) {
-  //     this.stats = new Stats(true);
-  //   }
-  // }
+  setStats() {
+    if (this.config.debug) {
+      this.stats = new Stats(true);
+    }
+  }
 
-  // setDebug() {
-  //   if (this.config.debug) {
-  //     this.debug = new Pane();
-  //     this.debug.containerElem_.style.width = "320px";
-  //   }
-  // }
+  setDebug() {
+    if (this.config.debug) {
+      this.debug = new Pane();
+      this.debug.containerElem_.style.width = "320px";
+      this.debug.containerElem_.style.left = "8px";
+      this.debug.containerElem_.style.position = "fixed";
+      this.debug.containerElem_.style.zIndex = "99999999999";
+      this.debug.containerElem_.style.display = "none";
+    }
+  }
 
   setScene() {
     this.scene = new THREE.Scene();

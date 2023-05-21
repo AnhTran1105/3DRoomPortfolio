@@ -148,9 +148,9 @@ svg {
   align-items: center;
   position: absolute;
   top: 50%;
-  left: 50%;
-  font-weight: 500;
-  font-size: 16px;
+  left: 58%;
+  font-weight: 600;
+  font-size: 38px;
   color: var(--color-text);
   transform: translate(-50%, -50%);
 }
@@ -386,15 +386,15 @@ svg {
 
 .hero-main {
   position: absolute;
-  bottom: 168px;
+  bottom: 90px;
   left: 0;
   color: var(--color-text);
 }
 
 .hero-second {
   position: absolute;
-  top: calc(50% - 120px);
-  right: 0;
+  top: calc(50% - 250px);
+  right: -70px;
   color: var(--color-text);
 }
 

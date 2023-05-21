@@ -12,6 +12,7 @@ import BouncingLogo from "./BouncingLogo.js";
 import Screen from "./Screen.js";
 import Floor from "./Floor.js";
 import Environment from "./Environment.js";
+import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper.js";
 
 export default class World extends EventEmitter {
   constructor(_options) {
@@ -25,7 +26,11 @@ export default class World extends EventEmitter {
     this.theme = this.experience.theme;
     this.sizes = this.experience.sizes;
 
-    // this.roomChildren = {};
+    this.x = 0;
+    this.y = 0;
+    this.z = 0;
+
+    this.roomChildren = {};
 
     // declare group of models
     this.group = new THREE.Group();
@@ -47,8 +52,8 @@ export default class World extends EventEmitter {
         this.setBouncingLogo();
         this.setScreens();
 
-        this.enviroment = new Environment();
         this.floor = new Floor();
+        this.environment = new Environment();
 
         this.setModel();
         this.setAnimation();
@@ -106,10 +111,6 @@ export default class World extends EventEmitter {
     // this.group.rotateY(Math.PI / 4);
 
     this.scene.add(this.group);
-
-    // const axesHelper = new THREE.AxesHelper(3);
-    // this.scene.add(axesHelper);
-    // this.group.position.set(0, 0, 0);
     this.group.rotation.y = Math.PI / 4;
   }
 
