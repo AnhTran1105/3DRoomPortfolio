@@ -1,7 +1,4 @@
-import './style.css'
-import Experience from './Experience/Experience.js'
+import "./style.css";
+import Experience from "./Experience/Experience.js";
 
-window.experience = new Experience({
-    targetElement: document.querySelector('.experience')
-})
-
+const experience = new Experience(document.querySelector(".experience-canvas"));

@@ -11,23 +11,28 @@ import ElgatoLight from "./ElgatoLight.js";
 import BouncingLogo from "./BouncingLogo.js";
 import Screen from "./Screen.js";
 import Floor from "./Floor.js";
+import Environment from "./Environment.js";
 
 export default class World extends EventEmitter {
   constructor(_options) {
     super();
 
     this.experience = new Experience();
-    this.config = this.experience.config;
+    // this.config = this.experience.config;
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.time = this.experience.time;
+    this.theme = this.experience.theme;
+    this.sizes = this.experience.sizes;
+
+    // this.roomChildren = {};
 
     // declare group of models
     this.group = new THREE.Group();
 
     this.lerp = {
-      current: 0,
-      target: 0,
+      current: Math.PI / 4,
+      target: Math.PI / 4,
       ease: 0.1,
     };
 
@@ -42,6 +47,7 @@ export default class World extends EventEmitter {
         this.setBouncingLogo();
         this.setScreens();
 
+        this.enviroment = new Environment();
         this.floor = new Floor();
 
         this.setModel();
@@ -51,6 +57,26 @@ export default class World extends EventEmitter {
         this.emit("worldready");
       }
     });
+
+    this.theme.on("switch", (theme) => {
+      this.switchTheme(theme);
+    });
+
+    this.sizes.on("switchdevice", (device) => {
+      this.switchDevice(device);
+    });
+  }
+
+  switchTheme(theme) {
+    if (this.environment) {
+      this.environment.switchTheme(theme);
+    }
+  }
+
+  switchDevice(device) {
+    if (this.controls) {
+      this.controls.switchDevice(device);
+    }
   }
 
   setModel() {
@@ -75,8 +101,16 @@ export default class World extends EventEmitter {
     this.group.add(this.pcScreen.model.mesh);
     this.group.add(this.macScreen.model.mesh);
 
-    this.group.scale.set(0.5, 0.5, 0.5);
+    this.group.scale.set(0.1, 0.1, 0.1);
+    // this.group.rotateZ(6);
+    // this.group.rotateY(Math.PI / 4);
+
     this.scene.add(this.group);
+
+    // const axesHelper = new THREE.AxesHelper(3);
+    // this.scene.add(axesHelper);
+    // this.group.position.set(0, 0, 0);
+    this.group.rotation.y = Math.PI / 4;
   }
 
   setAnimation() {
@@ -95,7 +129,6 @@ export default class World extends EventEmitter {
 
   setBaked() {
     this.baked = new Baked();
-    this.room = this.baked.model.mesh;
   }
 
   setGoogleLeds() {
@@ -136,16 +169,21 @@ export default class World extends EventEmitter {
   resize() {}
 
   update() {
+    // this.group.rotation.y += 0.01;
+    // this.group.rotation.z += 0.01;
+
+    // console.log(this.group.rotation.y);
+
     // make model move when hover
-    this.lerp.current = GSAP.utils.interpolate(
-      this.lerp.current,
-      this.lerp.target,
-      this.lerp.ease
-    );
+    // this.lerp.current = GSAP.utils.interpolate(
+    //   this.lerp.current,
+    //   this.lerp.target,
+    //   this.lerp.ease
+    // );
 
-    this.group.rotation.y = this.lerp.current;
+    // this.group.rotation.y = this.lerp.current;
 
-    if (this.mixer) this.mixer.update(this.time.delta * 0.0009);
+    if (this.mixer) this.mixer.update(this.time.delta * 0.009);
 
     if (this.googleLeds) this.googleLeds.update();
 

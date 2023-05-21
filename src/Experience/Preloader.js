@@ -20,6 +20,7 @@ export default class Preloader extends EventEmitter {
 
     this.world.on("worldready", () => {
       this.group = this.world.group;
+      // this.roomChildren = this.world.roomChildren;
       this.setAssets();
       this.playIntro();
     });
@@ -57,9 +58,9 @@ export default class Preloader extends EventEmitter {
       if (this.device === "desktop") {
         this.timeline
           .to(this.group.scale, {
-            x: 1.4,
-            y: 1.4,
-            z: 1.4,
+            x: 0.1,
+            y: 0.1,
+            z: 0.1,
             ease: "back.out(2.5)",
             duration: 0.7,
           })
@@ -71,7 +72,7 @@ export default class Preloader extends EventEmitter {
       } else {
         this.timeline
 
-          // .to(this.roomChildren.cube.scale, {
+          // .to(this.roomChildren.cube320.scale, {
           //   x: 1.4,
           //   y: 1.4,
           //   z: 1.4,
@@ -140,14 +141,14 @@ export default class Preloader extends EventEmitter {
           "same"
         )
         // .to(
-        //   this.roomChildren.cube.rotation,
+        //   this.roomChildren.cube320.rotation,
         //   {
         //     y: 2 * Math.PI + Math.PI / 4,
         //   },
         //   "same"
         // )
         // .to(
-        //   this.roomChildren.cube.scale,
+        //   this.roomChildren.cube320.scale,
         //   {
         //     x: 10,
         //     y: 10,
@@ -155,15 +156,17 @@ export default class Preloader extends EventEmitter {
         //   },
         //   "same"
         // )
+        .to(
+          this.camera.orthographicCamera.position,
+          {
+            y: 6.5,
+            z: 10,
+            x: 0,
+          },
+          "same"
+        )
         // .to(
-        //   this.camera.orthographicCamera.position,
-        //   {
-        //     y: 6.5,
-        //   },
-        //   "same"
-        // )
-        // .to(
-        //   this.roomChildren.cube.position,
+        //   this.roomChildren.cube320.position,
         //   {
         //     x: 0.638711,
         //     y: 8.5618,
@@ -177,7 +180,7 @@ export default class Preloader extends EventEmitter {
         //   z: 1,
         // })
         // .to(
-        //   this.roomChildren.cube.scale,
+        //   this.roomChildren.cube320.scale,
         //   {
         //     x: 0,
         //     y: 0,
@@ -393,11 +396,11 @@ export default class Preloader extends EventEmitter {
   }
 
   scale() {
-    this.roomChildren.rectLight.width = 0;
-    this.roomChildren.rectLight.height = 0;
+    // this.roomChildren.rectLight.width = 0;
+    // this.roomChildren.rectLight.height = 0;
 
     if (this.device === "desktop") {
-      this.group.scale.set(0.11, 0.11, 0.11);
+      this.group.scale.set(0.1, 0.1, 0.1);
     } else {
       this.group.scale.set(0.07, 0.07, 0.07);
     }

@@ -20,6 +20,9 @@ export default class Floor {
 
     this.plane.name = "plane";
     this.scene.add(this.plane);
+
+    this.plane.scale.set(5.0, 5.0, 5.0);
+
     this.plane.rotation.x = Math.PI / 2;
     this.plane.position.y = -0.3;
     this.plane.receiveShadow = true;

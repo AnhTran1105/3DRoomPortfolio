@@ -92,10 +92,10 @@ export default class Controls {
       "(min-width: 969px)": () => {
         // console.log("fired desktop");
 
-        this.group.scale.set(0.11, 0.11, 0.11);
+        this.group.scale.set(0.1, 0.1, 0.1);
         // this.rectLight.width = 0.5;
         // this.rectLight.height = 0.7;
-        // this.camera.orthographicCamera.position.set(0, 6.5, 10);
+        this.camera.orthographicCamera.position.set(0, 6.5, 10);
         this.group.position.set(0, 0, 0);
         // First section -----------------------------------------
         this.firstMoveTimeline = new GSAP.timeline({
@@ -143,20 +143,20 @@ export default class Controls {
           .to(
             this.group.scale,
             {
-              x: 0.4,
-              y: 0.4,
-              z: 0.4,
+              x: 0.8,
+              y: 0.8,
+              z: 0.8,
             },
             "same"
           );
-        //   .to(
-        //     this.rectLight,
-        //     {
-        //       width: 0.5 * 4,
-        //       height: 0.7 * 4,
-        //     },
-        //     "same"
-        //   );
+        // .to(
+        //   this.rectLight,
+        //   {
+        //     width: 0.5 * 4,
+        //     height: 0.7 * 4,
+        //   },
+        //   "same"
+        // );
 
         // Third section -----------------------------------------
         this.thirdMoveTimeline = new GSAP.timeline({
@@ -167,11 +167,10 @@ export default class Controls {
             scrub: 0.6,
             invalidateOnRefresh: true,
           },
+        }).to(this.camera.orthographicCamera.position, {
+          y: 1.5,
+          x: -4.1,
         });
-        // .to(this.camera.orthographicCamera.position, {
-        //   y: 1.5,
-        //   x: -4.1,
-        // });
       },
 
       // Mobile
@@ -179,10 +178,10 @@ export default class Controls {
         // console.log("fired mobile");
 
         // Resets
-        this.group.scale.set(0.07, 0.07, 0.07);
+        this.group.scale.set(0.1, 0.1, 0.1);
         this.group.position.set(0, 0, 0);
-        this.rectLight.width = 0.3;
-        this.rectLight.height = 0.4;
+        // this.rectLight.width = 0.3;
+        // this.rectLight.height = 0.4;
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
 
         // First section -----------------------------------------
@@ -219,14 +218,14 @@ export default class Controls {
             },
             "same"
           )
-          .to(
-            this.rectLight,
-            {
-              width: 0.3 * 3.4,
-              height: 0.4 * 3.4,
-            },
-            "same"
-          )
+          // .to(
+          //   this.rectLight,
+          //   {
+          //     width: 0.3 * 3.4,
+          //     height: 0.4 * 3.4,
+          //   },
+          //   "same"
+          // )
           .to(
             this.group.position,
             {
@@ -371,85 +370,85 @@ export default class Controls {
           },
         });
 
-        this.group.children.forEach((child) => {
-          if (child.name === "Mini_Floor") {
-            this.first = GSAP.to(child.position, {
-              x: -5.44055,
-              z: 13.6135,
-              duration: 0.3,
-            });
-          }
-          if (child.name === "Mailbox") {
-            this.second = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              duration: 0.3,
-            });
-          }
-          if (child.name === "Lamp") {
-            this.third = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2)",
-              duration: 0.3,
-            });
-          }
-          if (child.name === "circleFirst") {
-            this.fourth = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2)",
-              duration: 0.3,
-            });
-          }
-          if (child.name === "circleSecond") {
-            this.fifth = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              duration: 0.3,
-            });
-          }
-          if (child.name === "circleThird") {
-            this.sixth = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2)",
-              duration: 0.3,
-            });
-          }
-          if (child.name === "Dirt") {
-            this.seventh = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2)",
-              duration: 0.3,
-            });
-          }
-          if (child.name === "Flower1") {
-            this.eighth = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2)",
-              duration: 0.3,
-            });
-          }
-          if (child.name === "Flower2") {
-            this.ninth = GSAP.to(child.scale, {
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "back.out(2)",
-              duration: 0.3,
-            });
-          }
-        });
+        // this.group.children.forEach((child) => {
+        //   if (child.name === "Mini_Floor") {
+        //     this.first = GSAP.to(child.position, {
+        //       x: -5.44055,
+        //       z: 13.6135,
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "Mailbox") {
+        //     this.second = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "Lamp") {
+        //     this.third = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       ease: "back.out(2)",
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "circleFirst") {
+        //     this.fourth = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       ease: "back.out(2)",
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "circleSecond") {
+        //     this.fifth = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "circleThird") {
+        //     this.sixth = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       ease: "back.out(2)",
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "Dirt") {
+        //     this.seventh = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       ease: "back.out(2)",
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "Flower1") {
+        //     this.eighth = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       ease: "back.out(2)",
+        //       duration: 0.3,
+        //     });
+        //   }
+        //   if (child.name === "Flower2") {
+        //     this.ninth = GSAP.to(child.scale, {
+        //       x: 1,
+        //       y: 1,
+        //       z: 1,
+        //       ease: "back.out(2)",
+        //       duration: 0.3,
+        //     });
+        //   }
+        // });
         this.secondPartTimeline.add(this.first);
         this.secondPartTimeline.add(this.second);
         this.secondPartTimeline.add(this.third);
