@@ -1,26 +1,37 @@
 import { EventEmitter } from "events";
 
 export default class Theme extends EventEmitter {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.theme = "light";
+    this.theme = "light";
 
-        this.toggleButton = document.querySelector(".toggle-button");
-        this.toggleCircle = document.querySelector(".toggle-circle");
+    this.toggleButton = document.querySelector(".toggle-button");
+    this.toggleCircle1 = document.querySelector(".toggle-circle-1");
 
-        this.setEventListeners();
-    }
+    this.toggleMenu = document.querySelector(".toggle-menu");
+    this.toggleCircle2 = document.querySelector(".toggle-circle-2");
 
-    setEventListeners() {
-        this.toggleButton.addEventListener("click", () => {
-            this.toggleCircle.classList.toggle("slide");
-            this.theme = this.theme === "light" ? "dark" : "light";
-            document.body.classList.toggle("dark-theme");
-            document.body.classList.toggle("light-theme");
-            // console.log(this.theme);
+    this.setEventListeners();
+    this.setMenu();
+  }
 
-            this.emit("switch", this.theme);
-        });
-    }
+  setEventListeners() {
+    this.toggleButton.addEventListener("click", () => {
+      this.toggleCircle1.classList.toggle("slide");
+      this.theme = this.theme === "light" ? "dark" : "light";
+      document.body.classList.toggle("dark-theme");
+      document.body.classList.toggle("light-theme");
+      // console.log(this.theme);
+
+      this.emit("switch", this.theme);
+    });
+  }
+
+  setMenu() {
+    this.toggleMenu.addEventListener("click", () => {
+      this.toggleCircle2.classList.toggle("slide");
+      this.emit("togglemenu");
+    });
+  }
 }

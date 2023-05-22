@@ -52,6 +52,17 @@ export default class Experience {
       this.resize();
     });
 
+    this.theme.on("togglemenu", () => {
+      // get menu
+      const menu = document.querySelector(".tp-dfwv");
+
+      if (menu.style.visibility === "hidden") {
+        menu.style.visibility = "visible";
+      } else {
+        menu.style.visibility = "hidden";
+      }
+    });
+
     this.update();
   }
 
@@ -100,7 +111,7 @@ export default class Experience {
       this.debug.containerElem_.style.left = "8px";
       this.debug.containerElem_.style.position = "fixed";
       this.debug.containerElem_.style.zIndex = "99999999999";
-      this.debug.containerElem_.style.display = "none";
+      this.debug.containerElem_.style.visibility = "hidden";
     }
   }
 

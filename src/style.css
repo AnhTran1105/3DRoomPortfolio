@@ -180,12 +180,30 @@ svg {
   position: fixed;
   display: flex;
   opacity: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 12px;
+  right: 48px;
+  z-index: 99999999999999;
+}
+
+.theme {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.visible-wrapper,
+.hidden-wrapper {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  top: 48px;
-  right: 48px;
-  z-index: 99999999999999;
+  color: var(--color-text);
 }
 
 .sun-wrapper,
@@ -212,6 +230,21 @@ svg {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+.toggle-menu {
+  cursor: pointer;
+  position: relative;
+  width: 56px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-pink);
+  border-radius: 999px;
+  margin: 0px 16px;
+  border: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 .toggle-circle {
   position: absolute;
   left: 6px;
@@ -222,7 +255,11 @@ svg {
   transition: all 0.2s ease-in-out;
 }
 
-.toggle-button:hover .toggle-circle {
+.toggle-button:hover .toggle-circle-1 {
+  transform: scale(0.9);
+}
+
+.toggle-menu:hover .toggle-circle-2 {
   transform: scale(0.9);
 }
 
