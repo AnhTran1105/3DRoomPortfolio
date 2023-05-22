@@ -22,6 +22,22 @@ export default class CoffeeSteam {
     }
 
     this.setModel();
+    this.randomizeLightColor();
+  }
+
+  randomizeLightColor() {
+    setInterval(() => {
+      // Change color of light randomly
+      this.model.material.uniforms.uLightTvColor.value.setHex(
+        Math.random() * 0xffffff
+      );
+      this.model.material.uniforms.uLightDeskColor.value.setHex(
+        Math.random() * 0xffffff
+      );
+      this.model.material.uniforms.uLightPcColor.value.setHex(
+        Math.random() * 0xffffff
+      );
+    }, 3000);
   }
 
   setModel() {
@@ -54,7 +70,7 @@ export default class CoffeeSteam {
         uBakedNeutralTexture: { value: this.model.bakedNeutralTexture },
         uLightMapTexture: { value: this.model.lightMapTexture },
 
-        uNightMix: { value: 1 },
+        uNightMix: { value: 0 },
         uNeutralMix: { value: 0 },
 
         uLightTvColor: { value: new THREE.Color(this.colors.tv) },

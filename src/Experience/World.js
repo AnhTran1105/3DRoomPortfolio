@@ -63,8 +63,8 @@ export default class World extends EventEmitter {
       }
     });
 
-    this.theme.on("switch", (theme) => {
-      this.switchTheme(theme);
+    this.theme.on("switch", (theme, uNightMixValue) => {
+      this.switchTheme(theme, uNightMixValue);
     });
 
     this.sizes.on("switchdevice", (device) => {
@@ -72,9 +72,10 @@ export default class World extends EventEmitter {
     });
   }
 
-  switchTheme(theme) {
+  switchTheme(theme, uNightMixValue) {
     if (this.environment) {
       this.environment.switchTheme(theme);
+      this.baked.model.mesh.material.uniforms.uNightMix.value = uNightMixValue;
     }
   }
 
@@ -86,6 +87,7 @@ export default class World extends EventEmitter {
 
   setModel() {
     // Add models to group
+
     this.group.add(this.baked.model.mesh);
     this.group.add(this.topChair.model.group);
     this.group.add(this.elgatoLight.model.mesh);

@@ -20,11 +20,12 @@ export default class Theme extends EventEmitter {
     this.toggleButton.addEventListener("click", () => {
       this.toggleCircle1.classList.toggle("slide");
       this.theme = this.theme === "light" ? "dark" : "light";
+      this.uNightMixValue = this.theme === "light" ? 0 : 1;
       document.body.classList.toggle("dark-theme");
       document.body.classList.toggle("light-theme");
       // console.log(this.theme);
 
-      this.emit("switch", this.theme);
+      this.emit("switch", this.theme, this.uNightMixValue);
     });
   }
 

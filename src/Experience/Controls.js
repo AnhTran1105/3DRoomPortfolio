@@ -98,9 +98,8 @@ export default class Controls {
       "(min-width: 969px)": () => {
         // console.log("fired desktop");
 
-        this.group.scale.set(0.3, 0.3, 0.3);
-        // this.rectLight.width = 0.5;
-        // this.rectLight.height = 0.7;
+        this.group.scale.set(0.35, 0.35, 0.35);
+
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
         this.group.position.set(0, 0, 0);
         // First section -----------------------------------------
@@ -183,8 +182,8 @@ export default class Controls {
             invalidateOnRefresh: true,
           },
         }).to(this.camera.orthographicCamera.position, {
-          y: 1.5,
-          x: -4.1,
+          y: 5,
+          x: -6,
         });
       },
 
@@ -193,8 +192,8 @@ export default class Controls {
         // console.log("fired mobile");
 
         // Resets
-        this.group.scale.set(0.1, 0.1, 0.1);
-        this.group.position.set(0, 0, 0);
+        this.group.scale.set(0.15, 0.15, 0.15);
+        this.group.position.set(0.065, 0, -0.5);
         // this.rectLight.width = 0.3;
         // this.rectLight.height = 0.4;
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
@@ -227,9 +226,9 @@ export default class Controls {
           .to(
             this.group.scale,
             {
-              x: 0.25,
-              y: 0.25,
-              z: 0.25,
+              x: 0.6,
+              y: 0.6,
+              z: 0.6,
             },
             "same"
           )
@@ -244,7 +243,7 @@ export default class Controls {
           .to(
             this.group.position,
             {
-              x: 1.5,
+              x: 0.5,
             },
             "same"
           );
@@ -332,9 +331,9 @@ export default class Controls {
             scrub: 0.6,
           },
         }).to(this.circleFirst.scale, {
-          x: 3,
-          y: 3,
-          z: 3,
+          x: 15,
+          y: 15,
+          z: 15,
         });
 
         // Second section -----------------------------------------
@@ -349,9 +348,9 @@ export default class Controls {
           .to(
             this.circleSecond.scale,
             {
-              x: 3,
-              y: 3,
-              z: 3,
+              x: 10,
+              y: 10,
+              z: 10,
             },
             "same"
           )
@@ -373,9 +372,9 @@ export default class Controls {
             scrub: 0.6,
           },
         }).to(this.circleThird.scale, {
-          x: 3,
-          y: 3,
-          z: 3,
+          x: 10,
+          y: 10,
+          z: 10,
         });
 
         // Mini Platform Animations

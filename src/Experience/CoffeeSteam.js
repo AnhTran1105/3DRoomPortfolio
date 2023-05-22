@@ -36,7 +36,7 @@ export default class CoffeeSteam {
       fragmentShader,
       uniforms: {
         uTime: { value: 0 },
-        uTimeFrequency: { value: 0.0004 },
+        uTimeFrequency: { value: 0.0006 },
         uUvFrequency: { value: new THREE.Vector2(4, 5) },
         uColor: { value: new THREE.Color(this.model.color) },
       },
