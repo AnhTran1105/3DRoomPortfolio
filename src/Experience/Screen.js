@@ -44,6 +44,6 @@ export default class Screen {
   }
 
   update() {
-    // this.model.group.rotation.y = Math.sin(this.time.elapsed * 0.0005) * 0.5
+    // this.model.group.rotation.y = Math.sin(this.time.elapsed * 0.0005) * 0.5;
   }
 }

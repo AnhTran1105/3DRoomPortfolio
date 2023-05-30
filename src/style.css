@@ -430,23 +430,23 @@ svg {
 
 .hero-second {
   position: absolute;
-  top: calc(50% - 250px);
-  right: -70px;
+  top: calc(50% - 240px);
+  left: 0px;
   color: var(--color-text);
 }
 
 .hero-main-title {
-  font-size: 64px;
+  font-size: 38px;
   color: var(--color-text);
 }
 
 .hero-main-description {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-text);
 }
 
 .hero-second-subheading {
-  font-size: 32px;
+  font-size: 14px;
   text-transform: uppercase;
   color: var(--color-text);
 }

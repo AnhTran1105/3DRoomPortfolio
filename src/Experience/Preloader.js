@@ -20,7 +20,6 @@ export default class Preloader extends EventEmitter {
 
     this.world.on("worldready", () => {
       this.group = this.world.group;
-      // this.roomChildren = this.world.roomChildren;
       this.setAssets();
       this.playIntro();
     });
@@ -32,16 +31,6 @@ export default class Preloader extends EventEmitter {
     convert(document.querySelector(".hero-main-description"));
     convert(document.querySelector(".hero-second-subheading"));
     convert(document.querySelector(".second-sub"));
-
-    // this.room.scaleModel();
-
-    // console.log(this.world);
-    // this.scene.add(this.resources.items.roomModel.scene);
-
-    // this.room.scale.set(0.1, 0.1, 0.1);
-
-    // this.roomChildren = this.experience.world.room.roomChildren;
-    // console.log(this.room);
   }
 
   firstIntro() {
@@ -65,7 +54,7 @@ export default class Preloader extends EventEmitter {
             duration: 1,
           })
           .to(this.group.position, {
-            x: -1.5,
+            x: -2.0,
             ease: "power1.out",
             duration: 0.7,
           });
@@ -134,9 +123,9 @@ export default class Preloader extends EventEmitter {
           .to(
             this.group.position,
             {
-              x: 0,
+              x: 1.5,
               y: 0,
-              z: 0,
+              z: 0.75,
               ease: "power1.out",
             },
             "same"
@@ -151,9 +140,9 @@ export default class Preloader extends EventEmitter {
             "same"
           )
           .to(this.group.scale, {
-            x: 0.35,
-            y: 0.35,
-            z: 0.35,
+            x: 0.38,
+            y: 0.38,
+            z: 0.38,
             ease: "power1.out",
             duration: 1,
           })
@@ -359,9 +348,6 @@ export default class Preloader extends EventEmitter {
   }
 
   scale() {
-    // this.roomChildren.rectLight.width = 0;
-    // this.roomChildren.rectLight.height = 0;
-
     if (this.device === "desktop") {
       this.group.scale.set(0.1, 0.1, 0.1);
     } else {

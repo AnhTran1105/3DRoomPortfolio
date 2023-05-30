@@ -49,7 +49,6 @@ export default class Environment {
   }
 
   switchTheme(theme) {
-    // console.log(this.sunLight);
     if (theme === "dark") {
       GSAP.to(this.sunLight.color, {
         r: 0.17254901960784313,

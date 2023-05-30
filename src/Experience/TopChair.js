@@ -20,7 +20,7 @@ export default class TopChair {
     this.model.group = this.resources.items.topChairModel.scene.children[0];
 
     this.model.group.name = "topchair";
-    this.scene.add(this.model.group);
+    // this.scene.add(this.model.group);
 
     this.model.group.traverse((_child) => {
       if (_child instanceof THREE.Mesh) {

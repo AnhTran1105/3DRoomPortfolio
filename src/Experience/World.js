@@ -19,7 +19,6 @@ export default class World extends EventEmitter {
     super();
 
     this.experience = new Experience();
-    // this.config = this.experience.config;
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.time = this.experience.time;
@@ -89,7 +88,7 @@ export default class World extends EventEmitter {
     // Add models to group
 
     this.group.add(this.baked.model.mesh);
-    this.group.add(this.topChair.model.group);
+    // this.group.add(this.topChair.model.group);
     this.group.add(this.elgatoLight.model.mesh);
 
     this.group.add(this.floor.plane);
@@ -103,30 +102,25 @@ export default class World extends EventEmitter {
       this.group.add(item.mesh)
     );
 
-    this.group.add(this.bouncingLogo.model.group);
-    this.group.add(this.coffeeSteam.model.mesh);
+    // this.group.add(this.bouncingLogo.model.group);
+    // this.group.add(this.coffeeSteam.model.mesh);
     this.group.add(this.pcScreen.model.mesh);
     this.group.add(this.macScreen.model.mesh);
 
     this.group.scale.set(0.1, 0.1, 0.1);
-    // this.group.rotateZ(6);
-    // this.group.rotateY(Math.PI / 4);
-
     this.scene.add(this.group);
     this.group.rotation.y = Math.PI / 4;
   }
 
   setAnimation() {
     this.mixer = new THREE.AnimationMixer(this.group);
-    // this.swim = this.mixer.clipAction(this.room.animations[0]);
-    // this.swim.play();
   }
 
   onMouseMove() {
     window.addEventListener("mousemove", (e) => {
       this.rotation =
         ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
-      this.lerp.target = this.rotation * 0.05;
+      this.lerp.target = this.rotation * 0.15 + Math.PI / 4;
     });
   }
 
@@ -161,11 +155,11 @@ export default class World extends EventEmitter {
   setScreens() {
     this.pcScreen = new Screen(
       this.resources.items.pcScreenModel.scene.children[0],
-      "/assets/videoPortfolio.mp4"
+      "/assets/universe.mp4"
     );
     this.macScreen = new Screen(
       this.resources.items.macScreenModel.scene.children[0],
-      "/assets/videoStream.mp4"
+      "/assets/coding.mp4"
     );
   }
 
@@ -178,13 +172,13 @@ export default class World extends EventEmitter {
     // console.log(this.group.rotation.y);
 
     // make model move when hover
-    // this.lerp.current = GSAP.utils.interpolate(
-    //   this.lerp.current,
-    //   this.lerp.target,
-    //   this.lerp.ease
-    // );
+    this.lerp.current = GSAP.utils.interpolate(
+      this.lerp.current,
+      this.lerp.target,
+      this.lerp.ease
+    );
 
-    // this.group.rotation.y = this.lerp.current;
+    this.group.rotation.y = this.lerp.current;
 
     if (this.mixer) this.mixer.update(this.time.delta * 0.009);
 

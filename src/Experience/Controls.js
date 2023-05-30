@@ -14,18 +14,6 @@ export default class Controls {
     this.camera = this.experience.camera;
     this.group = this.experience.world.group;
 
-    // this.topchair = this.group.children[1];
-
-    // // this.topchair = this.group.children.filter((child) => (child.name = "topchair"))
-
-    // console.log(this.group.children[1]);
-
-    // this.group.children.forEach((child) => {
-    //   if (child.type === "RectAreaLight") {
-    //     this.rectLight = child;
-    //   }
-    // });
-
     this.circleFirst = this.experience.world.floor.circleFirst;
     this.circleSecond = this.experience.world.floor.circleSecond;
     this.circleThird = this.experience.world.floor.circleThird;
@@ -98,10 +86,10 @@ export default class Controls {
       "(min-width: 969px)": () => {
         // console.log("fired desktop");
 
-        this.group.scale.set(0.35, 0.35, 0.35);
+        this.group.scale.set(0.38, 0.38, 0.38);
 
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
-        this.group.position.set(0, 0, 0);
+        this.group.position.set(1.5, 0, 0.75);
         // First section -----------------------------------------
         this.firstMoveTimeline = new GSAP.timeline({
           scrollTrigger: {
@@ -115,10 +103,10 @@ export default class Controls {
         });
         this.firstMoveTimeline.fromTo(
           this.group.position,
-          { x: 0, y: 0, z: 0 },
+          { x: 1.5, y: 0, z: 0.75 },
           {
             x: () => {
-              return this.sizes.width * 0.0015;
+              return this.sizes.width * 0.002;
             },
           }
         );
@@ -137,7 +125,7 @@ export default class Controls {
             this.group.position,
             {
               x: () => {
-                return 1;
+                return 1.5;
               },
               z: () => {
                 return this.sizes.height * 0.0032;
@@ -154,23 +142,6 @@ export default class Controls {
             },
             "same"
           );
-        // .to(
-        //   this.topchair.rotation,
-        //   {
-        //     y: 2 * Math.PI + Math.PI / 4,
-        //     ease: "power1.out",
-        //     duration: 1.5,
-        //   },
-        //   "same"
-        // );
-        // .to(
-        //   this.rectLight,
-        //   {
-        //     width: 0.5 * 4,
-        //     height: 0.7 * 4,
-        //   },
-        //   "same"
-        // );
 
         // Third section -----------------------------------------
         this.thirdMoveTimeline = new GSAP.timeline({
@@ -194,8 +165,6 @@ export default class Controls {
         // Resets
         this.group.scale.set(0.15, 0.15, 0.15);
         this.group.position.set(0.065, 0, -0.5);
-        // this.rectLight.width = 0.3;
-        // this.rectLight.height = 0.4;
         this.camera.orthographicCamera.position.set(0, 6.5, 10);
 
         // First section -----------------------------------------
@@ -232,14 +201,6 @@ export default class Controls {
             },
             "same"
           )
-          // .to(
-          //   this.rectLight,
-          //   {
-          //     width: 0.3 * 3.4,
-          //     height: 0.4 * 3.4,
-          //   },
-          //   "same"
-          // )
           .to(
             this.group.position,
             {
@@ -358,7 +319,7 @@ export default class Controls {
             this.group.position,
             {
               x: -1,
-              y: -1,
+              y: -1.5,
             },
             "same"
           );
@@ -385,85 +346,6 @@ export default class Controls {
           },
         });
 
-        // this.group.children.forEach((child) => {
-        //   if (child.name === "Mini_Floor") {
-        //     this.first = GSAP.to(child.position, {
-        //       x: -5.44055,
-        //       z: 13.6135,
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "Mailbox") {
-        //     this.second = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "Lamp") {
-        //     this.third = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       ease: "back.out(2)",
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "circleFirst") {
-        //     this.fourth = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       ease: "back.out(2)",
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "circleSecond") {
-        //     this.fifth = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "circleThird") {
-        //     this.sixth = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       ease: "back.out(2)",
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "Dirt") {
-        //     this.seventh = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       ease: "back.out(2)",
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "Flower1") {
-        //     this.eighth = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       ease: "back.out(2)",
-        //       duration: 0.3,
-        //     });
-        //   }
-        //   if (child.name === "Flower2") {
-        //     this.ninth = GSAP.to(child.scale, {
-        //       x: 1,
-        //       y: 1,
-        //       z: 1,
-        //       ease: "back.out(2)",
-        //       duration: 0.3,
-        //     });
-        //   }
-        // });
         this.secondPartTimeline.add(this.first);
         this.secondPartTimeline.add(this.second);
         this.secondPartTimeline.add(this.third);
