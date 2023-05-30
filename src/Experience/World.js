@@ -88,7 +88,7 @@ export default class World extends EventEmitter {
     // Add models to group
 
     this.group.add(this.baked.model.mesh);
-    // this.group.add(this.topChair.model.group);
+    this.group.add(this.topChair.model.group);
     this.group.add(this.elgatoLight.model.mesh);
 
     this.group.add(this.floor.plane);
@@ -102,8 +102,8 @@ export default class World extends EventEmitter {
       this.group.add(item.mesh)
     );
 
-    // this.group.add(this.bouncingLogo.model.group);
-    // this.group.add(this.coffeeSteam.model.mesh);
+    this.group.add(this.bouncingLogo.model.group);
+    this.group.add(this.coffeeSteam.model.mesh);
     this.group.add(this.pcScreen.model.mesh);
     this.group.add(this.macScreen.model.mesh);
 
